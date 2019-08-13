@@ -23,6 +23,9 @@
     </modules>
     <global>
         <models>
+            <phoptimizations>
+                <class>PH2M_PhOptimizations_Model</class>
+            </phoptimizations>
             <cms>
                 <rewrite>
                     <page>PH2M_PhOptimizations_Model_Override_Cms_Page</page>
@@ -30,4 +33,16 @@
             </cms>
         </models>
     </global>
+    <adminhtml>
+        <events>
+            <cms_page_save_after>
+                <observers>
+                    <ph2m_phoptimizations_cms_page_save_after>
+                        <class>phoptimizations/observer</class>
+                        <method>cmsPageSaveAfter</method>
+                    </ph2m_phoptimizations_cms_page_save_after>
+                </observers>
+            </cms_page_save_after>
+        </events>
+    </adminhtml>
 </config>
