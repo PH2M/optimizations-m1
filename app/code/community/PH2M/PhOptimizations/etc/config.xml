@@ -31,6 +31,12 @@
                     <page>PH2M_PhOptimizations_Model_Override_Cms_Page</page>
                 </rewrite>
             </cms>
+            <catalog>
+                <rewrite>
+                    <category>PH2M_PhOptimizations_Model_Override_Catalog_Category</category>
+                    <product>PH2M_PhOptimizations_Model_Override_Catalog_Product</product>
+                </rewrite>
+            </catalog>
         </models>
     </global>
     <adminhtml>
@@ -43,6 +49,22 @@
                     </ph2m_phoptimizations_cms_page_save_after>
                 </observers>
             </cms_page_save_after>
+            <catalog_category_save_after>
+                <observers>
+                    <ph2m_phoptimizations_catalog_category_save_after>
+                        <class>phoptimizations/observer</class>
+                        <method>catalogCategorySaveAfter</method>
+                    </ph2m_phoptimizations_catalog_category_save_after>
+                </observers>
+            </catalog_category_save_after>
+            <catalog_product_save_after>
+                <observers>
+                    <ph2m_phoptimizations_catalog_product_save_after>
+                        <class>phoptimizations/observer</class>
+                        <method>catalogProductSaveAfter</method>
+                    </ph2m_phoptimizations_catalog_product_save_after>
+                </observers>
+            </catalog_product_save_after>
         </events>
     </adminhtml>
 </config>

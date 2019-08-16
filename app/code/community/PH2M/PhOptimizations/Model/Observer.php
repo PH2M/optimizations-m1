@@ -32,4 +32,30 @@ class PH2M_PhOptimizations_Model_Observer
             Mage::app()->cleanCache([Mage_Cms_Model_Page::CACHE_TAG . '_' . $cmsPage->getIdentifier()]);
         }
     }
+
+    /**
+     * @param Varien_Object $observer
+     */
+    public function catalogCategorySaveAfter(Varien_Object $observer)
+    {
+        /** @var Mage_Catalog_Model_Category $category */
+        $category = $observer->getEvent()->getDataObject();
+
+        if ($category && $categoryId = $category->getId()) {
+            Mage::app()->cleanCache([Mage_Catalog_Model_Category::CACHE_TAG . '_' . $categoryId]);
+        }
+    }
+
+    /**
+     * @param Varien_Object $observer
+     */
+    public function catalogProductSaveAfter(Varien_Object $observer)
+    {
+        /** @var Mage_Catalog_Model_Product $product */
+        $product = $observer->getEvent()->getDataObject();
+
+        if ($product && $productId = $product->getId()) {
+            Mage::app()->cleanCache([Mage_Catalog_Model_Product::CACHE_TAG . '_' . $productId]);
+        }
+    }
 }

@@ -21,6 +21,7 @@
             <active>true</active>
             <codePool>community</codePool>
             <depends>
+                <Mage_Catalog />
                 <Mage_Cms />
             </depends>
         </PH2M_PhOptimizations>
