@@ -38,9 +38,27 @@
                 </rewrite>
             </catalog>
         </models>
+        <events>
+            <admin_system_config_section_save_after>
+                <observers>
+                    <ph2m_optimizations_config_section_save_after>
+                        <type>singleton</type>
+                        <class>PH2M_PhOptimizations_Model_Observer</class>
+                        <method>configSectionSaveAfter</method>
+                    </ph2m_optimizations_config_section_save_after>
+                </observers>
+            </admin_system_config_section_save_after>
+        </events>
     </global>
     <adminhtml>
         <events>
+            <controller_action_predispatch>
+                <observers>
+                    <adminnotification>
+                        <type>disabled</type>
+                    </adminnotification>
+                </observers>
+            </controller_action_predispatch>
             <cms_page_save_after>
                 <observers>
                     <ph2m_phoptimizations_cms_page_save_after>

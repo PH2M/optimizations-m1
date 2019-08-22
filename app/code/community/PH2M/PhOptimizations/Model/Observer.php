@@ -58,4 +58,12 @@ class PH2M_PhOptimizations_Model_Observer
             Mage::app()->cleanCache([Mage_Catalog_Model_Product::CACHE_TAG . '_' . $productId]);
         }
     }
+
+    /**
+     * @param Varien_Event_Observer $observer
+     */
+    public function configSectionSaveAfter(Varien_Event_Observer $observer)
+    {
+        Mage::app()->cleanCache(['CONFIG_SECTION_' . strtoupper($observer->getEvent()->getSection())]);
+    }
 }
